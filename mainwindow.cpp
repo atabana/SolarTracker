@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    //
     if(fpga->isOpen()){
         fpga->close(); //    Close the serial port if it's open.
     }
@@ -93,10 +94,10 @@ void MainWindow::printPortsInfo()
 
 void MainWindow::setupSerial()
 {
-    ui->lcdSensor_1->display("-------");
-    ui->lcdSensor_2->display("-------");
-    ui->lcdSensor_3->display("-------");
-    ui->lcdSensor_4->display("-------");
+    ui->lcdSensor_1->display("----");
+    ui->lcdSensor_2->display("----");
+    ui->lcdSensor_3->display("----");
+    ui->lcdSensor_4->display("----");
 
     fpga = new QSerialPort(this);
     serialBuffer = "";

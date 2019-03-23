@@ -73,12 +73,12 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>111</width>
+       <width>161</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>Sensors Monitor</string>
+      <string>Sensors Voltage Monitor</string>
      </property>
     </widget>
     <widget class="QWidget" name="verticalLayoutWidget">
@@ -86,7 +86,7 @@
       <rect>
        <x>10</x>
        <y>40</y>
-       <width>71</width>
+       <width>121</width>
        <height>161</height>
       </rect>
      </property>
@@ -94,28 +94,28 @@
       <item>
        <widget class="QLabel" name="sensorLabel_1">
         <property name="text">
-         <string>Sensor 1</string>
+         <string>Sensor 1:</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="sensor_label2">
         <property name="text">
-         <string>Sensor 2</string>
+         <string>Sensor 2:</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="sensorLabel3">
         <property name="text">
-         <string>Sensor 3</string>
+         <string>Sensor 3:</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="sensorLabel_4">
         <property name="text">
-         <string>Sensor 4</string>
+         <string>Sensor 4:</string>
         </property>
        </widget>
       </item>
@@ -124,24 +124,40 @@
     <widget class="QWidget" name="gridLayoutWidget_3">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>40</y>
-       <width>161</width>
-       <height>157</height>
+       <x>130</x>
+       <y>36</y>
+       <width>131</width>
+       <height>161</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="1" column="0">
-       <widget class="QLCDNumber" name="lcdSensor_2"/>
+       <widget class="QLCDNumber" name="lcdSensor_2">
+        <property name="digitCount">
+         <number>4</number>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLCDNumber" name="lcdSensor_1"/>
+       <widget class="QLCDNumber" name="lcdSensor_1">
+        <property name="digitCount">
+         <number>4</number>
+        </property>
+       </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QLCDNumber" name="lcdSensor_4"/>
+       <widget class="QLCDNumber" name="lcdSensor_4">
+        <property name="digitCount">
+         <number>4</number>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLCDNumber" name="lcdSensor_3"/>
+       <widget class="QLCDNumber" name="lcdSensor_3">
+        <property name="digitCount">
+         <number>4</number>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -171,7 +187,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Battery Charge Monitor</string>
+      <string>Battery Voltage Monitor</string>
      </property>
     </widget>
     <widget class="QCustomPlot" name="chargePlot" native="true">
@@ -224,14 +240,14 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_5">
       <item row="0" column="0">
-       <widget class="QRadioButton" name="radioButton_3">
+       <widget class="QRadioButton" name="radioButton_Elevation">
         <property name="text">
          <string>Elevation Motor</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QRadioButton" name="radioButton_4">
+       <widget class="QRadioButton" name="radioButton_Azimuth">
         <property name="text">
          <string>Azimuth Motor</string>
         </property>
@@ -250,14 +266,14 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="pushButton_Up">
         <property name="text">
          <string>Up</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="pushButton_Down">
         <property name="text">
          <string>Down</string>
         </property>
@@ -276,14 +292,14 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="pushButton_Left">
         <property name="text">
          <string>Left</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="pushButton_Right">
         <property name="text">
          <string>Right</string>
         </property>
@@ -318,7 +334,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="2" column="0">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pushButton_Track">
         <property name="text">
          <string>Track Solar Source</string>
         </property>
@@ -365,22 +381,15 @@
     <widget class="QWidget" name="gridLayoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>30</y>
-       <width>131</width>
+       <width>158</width>
        <height>61</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <widget class="QRadioButton" name="radioButton">
-        <property name="text">
-         <string>Power</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="radioButton_2">
+       <widget class="QPushButton" name="pushButton_Reset">
         <property name="text">
          <string>Reset</string>
         </property>
