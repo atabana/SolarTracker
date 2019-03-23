@@ -68,7 +68,7 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="sensorsMonitorLabel">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -87,33 +87,33 @@
        <x>10</x>
        <y>40</y>
        <width>71</width>
-       <height>131</height>
+       <height>161</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLabel" name="label_6">
+       <widget class="QLabel" name="sensorLabel_1">
         <property name="text">
          <string>Sensor 1</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_7">
+       <widget class="QLabel" name="sensor_label2">
         <property name="text">
          <string>Sensor 2</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_8">
+       <widget class="QLabel" name="sensorLabel3">
         <property name="text">
          <string>Sensor 3</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_9">
+       <widget class="QLabel" name="sensorLabel_4">
         <property name="text">
          <string>Sensor 4</string>
         </property>
@@ -127,21 +127,21 @@
        <x>100</x>
        <y>40</y>
        <width>161</width>
-       <height>131</height>
+       <height>157</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <widget class="QLCDNumber" name="lcdNumber"/>
-      </item>
       <item row="1" column="0">
-       <widget class="QLCDNumber" name="lcdNumber_2"/>
+       <widget class="QLCDNumber" name="lcdSensor_2"/>
       </item>
-      <item row="2" column="0">
-       <widget class="QLCDNumber" name="lcdNumber_3"/>
+      <item row="0" column="0">
+       <widget class="QLCDNumber" name="lcdSensor_1"/>
       </item>
       <item row="3" column="0">
-       <widget class="QLCDNumber" name="lcdNumber_4"/>
+       <widget class="QLCDNumber" name="lcdSensor_4"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLCDNumber" name="lcdSensor_3"/>
       </item>
      </layout>
     </widget>
@@ -312,7 +312,7 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>151</width>
+       <width>158</width>
        <height>101</height>
       </rect>
      </property>
@@ -325,7 +325,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="pushButton_FullSweep">
         <property name="text">
          <string>Full Sweep Test</string>
         </property>
