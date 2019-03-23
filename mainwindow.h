@@ -26,12 +26,17 @@ private slots:
     void printPortsInfo();
     void setupSerial();
     void readSerial();
+    void writeSerial(QString);
 
     // sensors
     void updateSensor1(QString);
     void updateSensor2(QString);
     void updateSensor3(QString);
     void updateSensor4(QString);
+    void updateSensor5(QString);
+    void updateSensor6(QString);
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -41,11 +46,14 @@ private:
     static const quint16 fpga_product_id = 67;
     QByteArray serialData;
     QString serialBuffer;
-    QString parsed_data;
+    QString sensors_data_unparsed;
+    QStringList sensors_data_list;
     double sensor_1_value;
     double sensor_2_value;
     double sensor_3_value;
     double sensor_4_value;
+    double sensor_5_value;
+    double sensor_6_value;
 
 };
 

@@ -98,18 +98,18 @@ void MainWindow::setupSerial()
     ui->lcdSensor_2->display("----");
     ui->lcdSensor_3->display("----");
     ui->lcdSensor_4->display("----");
-
     fpga = new QSerialPort(this);
     serialBuffer = "";
-    parsed_data = "";
+    sensors_data_unparsed = "";
     sensor_1_value = 0.0;
     sensor_2_value = 0.0;
     sensor_3_value = 0.0;
     sensor_4_value = 0.0;
-
+    sensor_5_value = 0.0;
+    sensor_6_value = 0.0;
 
     /*
-     *   Identify the port the arduino uno is on.
+     *   Identify the port the fpga is on.
      */
     bool fpga_is_available = false;
     QString fpga_port_name;
@@ -131,7 +131,7 @@ void MainWindow::setupSerial()
      *  Open and configure the fpga port if available
      */
     if(fpga_is_available){
-        qDebug() << "Found the arduino port...\n";
+        qDebug() << "Found the fpga port...\n";
         fpga->setPortName(fpga_port_name);
         fpga->open(QSerialPort::ReadOnly);
         fpga->setBaudRate(QSerialPort::Baud9600);
@@ -151,28 +151,47 @@ void MainWindow::readSerial()
 {
     /*
      * readyRead() doesn't guarantee that the entire message will be received all at once.
-     * The message can arrive split into parts.  Need to buffer the serial data and then parse for the temperature value.
+     * The message can arrive split into parts.  Need to buffer the serial data and then parse for the values.
      *
      */
-    QStringList buffer_split = serialBuffer.split(","); //  split the serialBuffer string, parsing with ',' as the separator
+    QStringList buffer_split = serialBuffer.split("$"); //  split the serialBuffer string, parsing with '$' as the separator
 
     //  Check to see if there less than 3 tokens in buffer_split.
-    //  If there are at least 3 then this means there were 2 commas,
-    //  means there is a parsed temperature value as the second token (between 2 commas)
+    //  If there are at least 3 then this means there were 2 @,
+    //  means there is a parsed valuse as the second token (between 2 @)
     if(buffer_split.length() < 3){
         // no parsed value yet so continue accumulating bytes from serial in the buffer.
         serialData = fpga->readAll();
         serialBuffer = serialBuffer + QString::fromStdString(serialData.toStdString());
         serialData.clear();
     }else{
-        // the second element of buffer_split is parsed correctly, update the temperature value on
+        // the second element of buffer_split is parsed correctly, update the value on
         serialBuffer = "";
         qDebug() << buffer_split << "\n";
-        parsed_data = buffer_split[1];
-        sensor_1_value = (9/5.0) * (parsed_data.toDouble()) + 32; // convert to fahrenheit
-        qDebug() << "Temperature: " << sensor_1_value << "\n";
-        parsed_data = QString::number(sensor_1_value, 'g', 4); // format precision of temperature_value to 4 digits or fewer
-        MainWindow::updateSensor1(parsed_data);
+        sensors_data_unparsed = buffer_split[1];
+        sensors_data_list = sensors_data_unparsed.split("-");
+
+        sensor_1_value = sensors_data_list[0].toDouble();
+        sensor_2_value = sensors_data_list[1].toDouble();
+        sensor_3_value = sensors_data_list[2].toDouble();
+        sensor_4_value = sensors_data_list[3].toDouble();
+        sensor_5_value = sensors_data_list[4].toDouble();
+        sensor_6_value = sensors_data_list[5].toDouble();
+
+        qDebug() << "Sensor 1: " << sensor_1_value << "\n";
+        qDebug() << "Sensor 2: " << sensor_2_value << "\n";
+        qDebug() << "Sensor 3: " << sensor_3_value << "\n";
+        qDebug() << "Sensor 4: " << sensor_4_value << "\n";
+        qDebug() << "Sensor 5: " << sensor_5_value << "\n";
+        qDebug() << "Sensor 6: " << sensor_6_value << "\n";
+
+        // QString::number(sensor_1_value, 'g', 4); // format precision of value to 4 digits or fewer
+        MainWindow::updateSensor1(QString::number(sensor_1_value, 'g', 4));
+        MainWindow::updateSensor2(QString::number(sensor_2_value, 'g', 4));
+        MainWindow::updateSensor3(QString::number(sensor_3_value, 'g', 4));
+        MainWindow::updateSensor4(QString::number(sensor_4_value, 'g', 4));
+        MainWindow::updateSensor5(QString::number(sensor_5_value, 'g', 4));
+        MainWindow::updateSensor6(QString::number(sensor_6_value, 'g', 4));
     }
 
 }
@@ -200,3 +219,23 @@ void MainWindow::updateSensor4(QString sensor_reading)
     //  update the value displayed on the lcdNumber
     ui->lcdSensor_4->display(sensor_reading);
 }
+
+
+//TODO
+void MainWindow::updateSensor5(QString sensor_5_reading)
+{
+
+}
+//TODO
+void MainWindow::updateSensor6(QString sensor_6_reading)
+{
+
+}
+
+
+void MainWindow::writeSerial(QString command)
+{
+
+}
+
+
