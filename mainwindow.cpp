@@ -133,7 +133,7 @@ void MainWindow::setupSerial()
     if(fpga_is_available){
         qDebug() << "Found the fpga port...\n";
         fpga->setPortName(fpga_port_name);
-        fpga->open(QSerialPort::ReadOnly);
+        fpga->open(QSerialPort::ReadWrite);
         fpga->setBaudRate(QSerialPort::Baud9600);
         fpga->setDataBits(QSerialPort::Data8);
         fpga->setFlowControl(QSerialPort::NoFlowControl);
@@ -235,7 +235,73 @@ void MainWindow::updateSensor6(QString sensor_6_reading)
 
 void MainWindow::writeSerial(QString command)
 {
-
+    if(fpga->isOpen()){
+        fpga->write(command.toUtf8());
+    }
+    else{
+        QMessageBox::information(this, "Serial Port Error", "Couldn't send because serial port is not open.");
+    }
 }
 
 
+
+void MainWindow::on_pushButton_Up_clicked()
+{
+    //QMessageBox::information(this, "Up", "Up Clicked!");
+    writeSerial("/U/");
+
+}
+
+void MainWindow::on_pushButton_Down_clicked()
+{
+    //QMessageBox::information(this, "Down", "Down Clicked!");
+    writeSerial("/D/");
+}
+
+void MainWindow::on_pushButton_Left_clicked()
+{
+    //QMessageBox::information(this, "Left", "Left Clicked!");
+    writeSerial("/L/");
+}
+
+void MainWindow::on_pushButton_Right_clicked()
+{
+    //QMessageBox::information(this, "Right", "Right Clicked!");
+    writeSerial("/R/");
+}
+
+void MainWindow::on_pushButton_Reset_clicked()
+{
+    //QMessageBox::information(this, "Reset", "Reset Clicked!");
+    writeSerial("/X/");
+}
+
+void MainWindow::on_pushButton_FullSweep_clicked()
+{
+    //QMessageBox::information(this, "FullSweep", "Full Sweep Clicked!");
+    writeSerial("/F/");
+}
+
+void MainWindow::on_pushButton_Track_clicked()
+{
+    //QMessageBox::information(this, "Track", "Track Clicked!");
+    writeSerial("/T/");
+}
+
+void MainWindow::on_radioButton_Elevation_clicked()
+{
+    //QMessageBox::information(this, "Elevation", "Elevation Clicked!");
+    ui->pushButton_Up->setEnabled(true);
+    ui->pushButton_Down->setEnabled(true);
+    ui->pushButton_Left->setEnabled(false);
+    ui->pushButton_Right->setEnabled(false);
+}
+
+void MainWindow::on_radioButton_Azimuth_clicked()
+{
+    //QMessageBox::information(this, "Azimuth", "Azimuth Clicked!");
+    ui->pushButton_Up->setEnabled(false);
+    ui->pushButton_Down->setEnabled(false);
+    ui->pushButton_Left->setEnabled(true);
+    ui->pushButton_Right->setEnabled(true);
+}

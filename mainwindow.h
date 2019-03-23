@@ -38,6 +38,24 @@ private slots:
 
 
 
+    void on_pushButton_Up_clicked();
+
+    void on_pushButton_Down_clicked();
+
+    void on_pushButton_Left_clicked();
+
+    void on_pushButton_Right_clicked();
+
+    void on_pushButton_Reset_clicked();
+
+    void on_pushButton_FullSweep_clicked();
+
+    void on_pushButton_Track_clicked();
+
+    void on_radioButton_Elevation_clicked();
+
+    void on_radioButton_Azimuth_clicked();
+
 private:
     Ui::MainWindow *ui;
 
