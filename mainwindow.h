@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QSerialPort>
 #include <QSerialPortInfo>
-
+#include <QTimer>
 namespace Ui {
 class MainWindow;
 }
@@ -56,6 +56,11 @@ private slots:
 
     void on_radioButton_Azimuth_clicked();
 
+    void realtimePlot_1();
+    void realtimePlot_2();
+
+
+
 private:
     Ui::MainWindow *ui;
 
@@ -72,6 +77,11 @@ private:
     double sensor_4_value;
     double sensor_5_value;
     double sensor_6_value;
+
+    QTimer timer_plot_1;
+    QTimer timer_plot_2;
+
+
 
 };
 

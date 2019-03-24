@@ -27,46 +27,76 @@ MainWindow::~MainWindow()
 void MainWindow::makeVoltagePlot()
 {
 
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
+
     // create graph and assign data to it:
 
     ui->voltagePlot->addGraph();
-    ui->voltagePlot->graph(0)->setData(x, y);
+    QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
+    timeTicker->setTimeFormat("%s");
+    ui->voltagePlot->xAxis->setTicker(timeTicker);
+    ui->voltagePlot->axisRect()->setupFullAxesBox();
+
     // give the axes some labels:
-    ui->voltagePlot->xAxis->setLabel("time");
-    ui->voltagePlot->yAxis->setLabel("voltage");
-    // set axes ranges, so we see all data:
-    ui->voltagePlot->xAxis->setRange(0, 20);
-    ui->voltagePlot->yAxis->setRange(0, 20);
-    ui->voltagePlot->replot();
+    ui->voltagePlot->xAxis->setLabel("time (s)");
+    ui->voltagePlot->yAxis->setLabel("voltage (V)");
+
+    connect(&timer_plot_1, SIGNAL(timeout()),this,SLOT(realtimePlot_1()));
+    timer_plot_1.start(5);
 
 }
 
 void MainWindow::makeCurrentPlot()
 {
 
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
     // create graph and assign data to it:
-    ui->chargePlot->addGraph();
-    ui->chargePlot->graph(0)->setData(x, y);
-    // give the axes some labels:
-    ui->chargePlot->xAxis->setLabel("time");
-    ui->chargePlot->yAxis->setLabel("charge");
-    // set axes ranges, so we see all data:
-    ui->chargePlot->xAxis->setRange(0, 5);
-    ui->chargePlot->yAxis->setRange(0, 5);
-    ui->chargePlot->replot();
 
+    ui->chargePlot->addGraph();
+    QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
+    timeTicker->setTimeFormat("%s");
+    ui->chargePlot->xAxis->setTicker(timeTicker);
+    ui->chargePlot->axisRect()->setupFullAxesBox();
+
+    // give the axes some labels:
+    ui->chargePlot->xAxis->setLabel("time (s)");
+    ui->chargePlot->yAxis->setLabel("voltage (V)");
+
+    connect(&timer_plot_2, SIGNAL(timeout()),this,SLOT(realtimePlot_2()));
+    timer_plot_2.start(5);
+
+}
+
+void MainWindow::realtimePlot_1()
+{
+    static QTime time(QTime::currentTime());
+    double key = time.elapsed()/1000.0;
+    static double lastPointKey = 0;
+    if(key - lastPointKey > 0.002)
+    {
+        ui->voltagePlot->graph(0)->addData(key, sensor_5_value);
+        lastPointKey = key;
+    }
+
+    /* make key axis range scroll right with the data at a constant range of 8. */
+    ui->voltagePlot->graph(0)->rescaleValueAxis();
+    ui->voltagePlot->xAxis->setRange(key, 8, Qt::AlignRight);
+    ui->voltagePlot->replot();
+}
+
+void MainWindow::realtimePlot_2()
+{
+    static QTime time(QTime::currentTime());
+    double key = time.elapsed()/1000.0;
+    static double lastPointKey = 0;
+    if(key - lastPointKey > 0.002)
+    {
+        ui->chargePlot->graph(0)->addData(key, sensor_6_value);
+        lastPointKey = key;
+    }
+
+    /* make key axis range scroll right with the data at a constant range of 8. */
+    ui->chargePlot->graph(0)->rescaleValueAxis();
+    ui->chargePlot->xAxis->setRange(key, 8, Qt::AlignRight);
+    ui->chargePlot->replot();
 }
 
 /*
