@@ -6,12 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>866</width>
-    <height>612</height>
+    <width>1080</width>
+    <height>800</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1080</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1080</width>
+    <height>800</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Solar Tracker</string>
+   <string>Two-Degrees-Of-Freedom Solar Tracker</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QFrame" name="frame">
@@ -19,8 +37,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>361</width>
-      <height>251</height>
+      <width>521</width>
+      <height>371</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -34,21 +52,21 @@
       <rect>
        <x>10</x>
        <y>0</y>
-       <width>131</width>
-       <height>16</height>
+       <width>351</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>PV Voltage Monitor</string>
+      <string>Photvoltaic Panels Voltage Monitor</string>
      </property>
     </widget>
     <widget class="QCustomPlot" name="voltagePlot" native="true">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>321</width>
-       <height>221</height>
+       <x>10</x>
+       <y>30</y>
+       <width>501</width>
+       <height>331</height>
       </rect>
      </property>
     </widget>
@@ -56,10 +74,10 @@
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>10</y>
-      <width>271</width>
-      <height>241</height>
+      <x>430</x>
+      <y>450</y>
+      <width>241</width>
+      <height>261</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -71,23 +89,23 @@
     <widget class="QLabel" name="sensorsMonitorLabel">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>161</width>
-       <height>16</height>
+       <x>10</x>
+       <y>10</y>
+       <width>221</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>Sensors Voltage Monitor</string>
+      <string>Voltage Monitor</string>
      </property>
     </widget>
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
-       <width>121</width>
-       <height>161</height>
+       <y>50</y>
+       <width>91</width>
+       <height>171</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -124,8 +142,8 @@
     <widget class="QWidget" name="gridLayoutWidget_3">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>36</y>
+       <x>100</x>
+       <y>50</y>
        <width>131</width>
        <height>161</height>
       </rect>
@@ -134,28 +152,28 @@
       <item row="1" column="0">
        <widget class="QLCDNumber" name="lcdSensor_2">
         <property name="digitCount">
-         <number>4</number>
+         <number>8</number>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLCDNumber" name="lcdSensor_1">
         <property name="digitCount">
-         <number>4</number>
+         <number>8</number>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLCDNumber" name="lcdSensor_4">
         <property name="digitCount">
-         <number>4</number>
+         <number>8</number>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLCDNumber" name="lcdSensor_3">
         <property name="digitCount">
-         <number>4</number>
+         <number>8</number>
         </property>
        </widget>
       </item>
@@ -165,10 +183,10 @@
    <widget class="QFrame" name="frame_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>361</width>
-      <height>231</height>
+      <x>550</x>
+      <y>10</y>
+      <width>521</width>
+      <height>371</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -182,8 +200,8 @@
       <rect>
        <x>10</x>
        <y>0</y>
-       <width>151</width>
-       <height>16</height>
+       <width>291</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -193,10 +211,10 @@
     <widget class="QCustomPlot" name="chargePlot" native="true">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>19</y>
-       <width>331</width>
-       <height>201</height>
+       <x>10</x>
+       <y>30</y>
+       <width>501</width>
+       <height>331</height>
       </rect>
      </property>
     </widget>
@@ -204,10 +222,10 @@
    <widget class="QFrame" name="frame_4">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>280</y>
-      <width>271</width>
-      <height>231</height>
+      <x>10</x>
+      <y>450</y>
+      <width>411</width>
+      <height>261</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -220,48 +238,22 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>0</y>
-       <width>141</width>
-       <height>16</height>
+       <y>10</y>
+       <width>391</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>Manual Motor Control</string>
+      <string>Manual Servo Control</string>
      </property>
-    </widget>
-    <widget class="QWidget" name="gridLayoutWidget_4">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>122</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="radioButton_Elevation">
-        <property name="text">
-         <string>Elevation Motor</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="radioButton_Azimuth">
-        <property name="text">
-         <string>Azimuth Motor</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
     </widget>
     <widget class="QWidget" name="verticalLayoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>13</x>
-       <y>100</y>
-       <width>91</width>
-       <height>80</height>
+       <x>230</x>
+       <y>10</y>
+       <width>111</width>
+       <height>211</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -284,10 +276,10 @@
     <widget class="QWidget" name="horizontalLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>100</y>
-       <width>151</width>
-       <height>80</height>
+       <x>170</x>
+       <y>80</y>
+       <width>231</width>
+       <height>71</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -307,14 +299,53 @@
       </item>
      </layout>
     </widget>
+    <widget class="QRadioButton" name="radioButton_Azimuth">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>170</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Azimuth Servo</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_Elevation">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>140</y>
+       <width>241</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Elevation Servo</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_Azimuth_Elevation">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>200</y>
+       <width>221</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Elevation And Azimuth Servos</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_5">
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>20</y>
-      <width>181</width>
-      <height>141</height>
+      <y>450</y>
+      <width>191</width>
+      <height>261</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -323,53 +354,53 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string> Controls</string>
+     </property>
+    </widget>
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
-       <width>158</width>
-       <height>101</height>
+       <y>40</y>
+       <width>171</width>
+       <height>191</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="2" column="0">
        <widget class="QPushButton" name="pushButton_Track">
         <property name="text">
-         <string>Track Solar Source</string>
+         <string>Track</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QPushButton" name="pushButton_FullSweep">
         <property name="text">
-         <string>Full Sweep Test</string>
+         <string>Full Panel Sweep</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>0</y>
-       <width>59</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Controls</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QFrame" name="frame_6">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>280</y>
-      <width>171</width>
-      <height>151</height>
+      <x>880</x>
+      <y>450</y>
+      <width>191</width>
+      <height>261</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -382,8 +413,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
-       <width>158</width>
+       <y>100</y>
+       <width>171</width>
        <height>61</height>
       </rect>
      </property>
@@ -391,12 +422,25 @@
       <item row="0" column="0">
        <widget class="QPushButton" name="pushButton_Reset">
         <property name="text">
-         <string>Reset</string>
+         <string>Stop</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>400</y>
+      <width>1081</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -404,7 +448,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>866</width>
+     <width>1080</width>
      <height>22</height>
     </rect>
    </property>

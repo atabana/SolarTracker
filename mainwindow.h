@@ -5,6 +5,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QTimer>
+
 namespace Ui {
 class MainWindow;
 }
@@ -33,10 +34,6 @@ private slots:
     void updateSensor2(QString);
     void updateSensor3(QString);
     void updateSensor4(QString);
-    void updateSensor5(QString);
-    void updateSensor6(QString);
-
-
 
     void on_pushButton_Up_clicked();
 
@@ -57,16 +54,17 @@ private slots:
     void on_radioButton_Azimuth_clicked();
 
     void realtimePlot_1();
+
     void realtimePlot_2();
 
-
+    void on_radioButton_Azimuth_Elevation_clicked();
 
 private:
     Ui::MainWindow *ui;
 
     QSerialPort *fpga;
-    static const quint16 fpga_vendor_id = 9025;
-    static const quint16 fpga_product_id = 67;
+    static const quint16 fpga_vendor_id = 1027;
+    static const quint16 fpga_product_id = 24592;
     QByteArray serialData;
     QString serialBuffer;
     QString sensors_data_unparsed;
@@ -77,11 +75,10 @@ private:
     double sensor_4_value;
     double sensor_5_value;
     double sensor_6_value;
-
+    bool fpga_is_available = false;
     QTimer timer_plot_1;
     QTimer timer_plot_2;
-
-
+    bool clicked = false;
 
 };
 
